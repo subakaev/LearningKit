@@ -3,10 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LearningKit.Gui"
+        xmlns:viewModels="clr-namespace:LearningKit.Gui.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <WebBrowser Source="http://yandex.ru"></WebBrowser>
-    </Grid>
+        Title="MainWindow" Height="350" Width="525"
+        d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}">
+    <DockPanel>
+        <Button Command="{Binding ShowAddNewTaskPageCommand}" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top">Добавить</Button>
+        <Frame Name="Frame" NavigationUIVisibility="Hidden" DockPanel.Dock="Top" />
+    </DockPanel>
 </Window>

@@ -1,6 +1,7 @@
 
 src/.vs
 src/_ReSharper.Caches
+src/packages
 src/LearningKit.Gui/bin
 src/LearningKit.Gui/obj
 src/LearningKit.Data/bin
