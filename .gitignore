@@ -3,3 +3,5 @@ src/.vs
 src/_ReSharper.Caches
 src/LearningKit.Gui/bin
 src/LearningKit.Gui/obj
+src/LearningKit.Data/bin
+src/LearningKit.Data/obj
