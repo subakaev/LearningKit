@@ -16,6 +16,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <StackPanel DockPanel.Dock="Top" Grid.Row="0">
@@ -35,6 +36,10 @@
                 <local:WebBrowserPreviewBehavior Source="{Binding PreviewText}" ></local:WebBrowserPreviewBehavior>
             </i:Interaction.Behaviors>
         </WebBrowser>
+        
+        <StackPanel Grid.Row="3">
+            <Button Command="{Binding SaveCommand}">Save</Button>
+        </StackPanel>
     </Grid>
 
 </Page>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,20 +14,28 @@ namespace LearningKit.Data
         public string Condition { get; set; }
 
         [JsonProperty]
+        public string Solution { get; set; }
+
+        [JsonProperty]
         public string Answer { get; set; }
     }
 
     public class DataStorage
     {
-        public List<Data> Datas { get; } = new List<Data> {new Data {Condition = "Test condition <h1>afdasf</h1>", Answer = "<h2>afd</h2>"}};
+        public List<Data> Datas { get; private set; } = new List<Data>();
 
         public void Save() {
             var str = JsonConvert.SerializeObject(Datas);
 
-            var obj = JsonConvert.DeserializeObject<Data[]>(str);
+            File.WriteAllText(Environment.CurrentDirectory + @"\data.json", str);
         }
 
         public void Load() {
+            var fileName = Environment.CurrentDirectory + @"\data.json";
+
+            if (File.Exists(fileName)) {
+                Datas = JsonConvert.DeserializeObject<List<Data>>(File.ReadAllText(fileName));
+            }
         }
     }
 }

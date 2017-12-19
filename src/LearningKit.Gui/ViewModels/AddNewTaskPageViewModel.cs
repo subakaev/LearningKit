@@ -1,5 +1,7 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Windows.Input;
+using LearningKit.Data;
 using LearningKit.Gui.Commands;
 
 namespace LearningKit.Gui.ViewModels
@@ -56,8 +58,23 @@ namespace LearningKit.Gui.ViewModels
 
         public ICommand PreviewCommand { get; }
 
+        public ICommand SaveCommand { get; }
+
+        private readonly DataStorage storage;
+
         public AddNewTaskPageViewModel() {
             PreviewCommand = new RelayCommand(BuildPreview);
+
+            SaveCommand = new RelayCommand(Save);
+
+            storage = new DataStorage();
+            storage.Load();
+        }
+
+        private void Save() {
+            storage.Datas.Add(new Data.Data {Condition = TaskText, Solution = SolutionText, Answer = AnswerText});
+
+            storage.Save();
         }
 
         private void BuildPreview() {
