@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using LearningKit.Data;
+﻿using LearningKit.Gui.ViewModels;
 
 namespace LearningKit.Gui.Pages
 {
@@ -11,14 +10,8 @@ namespace LearningKit.Gui.Pages
         public AddNewExcercisePage()
         {
             InitializeComponent();
-        }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e) {
-            var data = new DataStorage();
-            data.Save();
-
-            if (!string.IsNullOrWhiteSpace(TextBox.Text))
-                WebBrowser.NavigateToString(TextBox.Text);
+            DataContext = new AddNewTaskPageViewModel();
         }
     }
 }

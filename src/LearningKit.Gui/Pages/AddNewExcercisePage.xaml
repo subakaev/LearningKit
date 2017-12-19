@@ -4,19 +4,37 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LearningKit.Gui.Pages"
+      xmlns:viewModels="clr-namespace:LearningKit.Gui.ViewModels"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="AddNewExcercisePage">
+      Title="AddNewExcercisePage"
+      d:DataContext="{d:DesignInstance viewModels:AddNewTaskPageViewModel}"
+      d:DesignWidth="300" d:DesignHeight="500">
+    
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-    <DockPanel>
-        <StackPanel DockPanel.Dock="Top">
-            <TextBox Height="100" MaxLines="10" AcceptsReturn="True" TextWrapping="Wrap" Name="TextBox"></TextBox>
+        <StackPanel DockPanel.Dock="Top" Grid.Row="0">
+            <Label>Условие:</Label>
+            <TextBox Text="{Binding TaskText}" Height="100" MaxLines="10" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+            <Label>Решение:</Label>
+            <TextBox Text="{Binding SolutionText}" Height="100" MaxLines="10" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+            <Label>Ответ:</Label>
+            <TextBox Text="{Binding AnswerText}" Height="50" MaxLines="10" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
         </StackPanel>
-        <StackPanel DockPanel.Dock="Top">
-            <Button Click="ButtonBase_OnClick">Preview</Button>
+
+        <StackPanel DockPanel.Dock="Top" Grid.Row="1">
+            <Button Command="{Binding PreviewCommand}">Preview</Button>
         </StackPanel>
-        <StackPanel DockPanel.Dock="Top">
-            <WebBrowser Height="100" Name="WebBrowser" Source="http://yandex.ru"></WebBrowser>
-        </StackPanel>
-    </DockPanel>
+        <WebBrowser Name="WebBrowser" Source="http://yandex.ru" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <i:Interaction.Behaviors>
+                <local:WebBrowserPreviewBehavior Source="{Binding PreviewText}" ></local:WebBrowserPreviewBehavior>
+            </i:Interaction.Behaviors>
+        </WebBrowser>
+    </Grid>
+
 </Page>
