@@ -1,4 +1,7 @@
-﻿using LearningKit.Gui.ViewModels;
+﻿using System.Windows.Navigation;
+using Autofac;
+using LearningKit.Gui.Startup;
+using LearningKit.Gui.ViewModels;
 
 namespace LearningKit.Gui
 {
@@ -11,9 +14,9 @@ namespace LearningKit.Gui
         {
             InitializeComponent();
 
-            var navigator = new Navigator(Frame.NavigationService);
+            Startup.AutofacContainer.Container.Resolve<INavigator>(new TypedParameter(typeof(NavigationService), Frame.NavigationService));
 
-            DataContext = new MainWindowViewModel(navigator);
+            DataContext = Startup.AutofacContainer.Resolve<MainWindowViewModel>();
         }
     }
 }

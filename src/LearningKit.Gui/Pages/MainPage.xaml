@@ -1,0 +1,22 @@
+﻿<Page x:Class="LearningKit.Gui.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:viewModels="clr-namespace:LearningKit.Gui.ViewModels"
+      mc:Ignorable="d" 
+      Title="MainPage"
+      d:DataContext="{d:DesignInstance viewModels:MainPageViewModel}">
+
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
+            <Label>Разделы:</Label>
+            <Button Padding="5" Command="{Binding ShowAddSectionDialogCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <ContentControl ContentTemplate="{StaticResource PlusIconTemplate}" Width="15" Height="15" VerticalAlignment="Center" />
+                    <Label VerticalAlignment="Center">Создать раздел</Label>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </DockPanel>
+</Page>

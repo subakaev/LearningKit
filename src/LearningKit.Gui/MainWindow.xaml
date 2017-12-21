@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:LearningKit.Gui.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="600" Width="800"
         d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}">
     <DockPanel>
-        <Button Command="{Binding ShowAddNewTaskPageCommand}" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top">Добавить</Button>
-        <Frame Name="Frame" NavigationUIVisibility="Hidden" DockPanel.Dock="Top" />
+        <Grid DockPanel.Dock="Top" Background="#FF232323">
+            <Label Foreground="LightGray" Margin="5" FontWeight="Bold" FontSize="16">Learning Kit</Label>
+        </Grid>
+        <Frame Name="Frame" NavigationUIVisibility="Hidden" DockPanel.Dock="Top" Background="Gray" />
     </DockPanel>
 </Window>

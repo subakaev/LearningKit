@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:LearningKit.Gui.Pages"
       xmlns:viewModels="clr-namespace:LearningKit.Gui.ViewModels"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:behaviors="clr-namespace:LearningKit.Gui.Behaviors"
       mc:Ignorable="d" 
       Title="AddNewExcercisePage"
       d:DataContext="{d:DesignInstance viewModels:AddNewTaskPageViewModel}"
@@ -33,7 +34,7 @@
         </StackPanel>
         <WebBrowser Name="WebBrowser" Source="http://yandex.ru" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <i:Interaction.Behaviors>
-                <local:WebBrowserPreviewBehavior Source="{Binding PreviewText}" ></local:WebBrowserPreviewBehavior>
+                <behaviors:WebBrowserPreviewBehavior Source="{Binding PreviewText}" ></behaviors:WebBrowserPreviewBehavior>
             </i:Interaction.Behaviors>
         </WebBrowser>
         
@@ -43,3 +44,4 @@
     </Grid>
 
 </Page>
+

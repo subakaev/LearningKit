@@ -71,9 +71,20 @@
     <Compile Include="Pages\AddNewExcercisePage.xaml.cs">
       <DependentUpon>AddNewExcercisePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\WebBrowserPreviewBehavior.cs" />
+    <Compile Include="Pages\Dialogs\AddNewSectionPage.xaml.cs">
+      <DependentUpon>AddNewSectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dialogs\DialogWindow.xaml.cs">
+      <DependentUpon>DialogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Behaviors\WebBrowserPreviewBehavior.cs" />
+    <Compile Include="Services\DialogService.cs" />
     <Compile Include="Startup\AutofacContainer.cs" />
     <Compile Include="ViewModels\AddNewTaskPageViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Page Include="MainWindow.xaml">
@@ -89,6 +100,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\AddNewExcercisePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\AddNewSectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\DialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Icons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
