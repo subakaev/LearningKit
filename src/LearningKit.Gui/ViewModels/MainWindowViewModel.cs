@@ -3,35 +3,20 @@ using System.Windows.Input;
 using System.Windows.Navigation;
 using LearningKit.Gui.Commands;
 using LearningKit.Gui.Pages;
+using LearningKit.Gui.Services;
 
 namespace LearningKit.Gui.ViewModels
 {
-    public interface INavigator
-    {
-        void Navigate(Page page);
-    }
-
-    class Navigator : INavigator
-    {
-        private readonly NavigationService navigationService;
-
-        public Navigator(NavigationService navigationService) {
-            this.navigationService = navigationService;
-        }
-
-        public void Navigate(Page page) {
-            navigationService.Navigate(page);
-        }
-    }
+    
 
     public class MainWindowViewModel
     {
-        private readonly INavigator navigator;
+        private readonly INavigationService navigationService;
         public ICommand ShowAddNewTaskPageCommand { get; }
 
-        public MainWindowViewModel(INavigator navigator) {
-            this.navigator = navigator;
-            ShowAddNewTaskPageCommand = new RelayCommand(() => navigator.Navigate(new AddNewExcercisePage()));
+        public MainWindowViewModel(INavigationService navigationService) {
+            this.navigationService = navigationService;
+            ShowAddNewTaskPageCommand = new RelayCommand(() => navigationService.Navigate(new AddNewExcercisePage()));
         }
     }
 }

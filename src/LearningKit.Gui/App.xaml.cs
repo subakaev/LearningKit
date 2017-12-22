@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using LearningKit.Gui.Pages;
+using LearningKit.Gui.Services;
 using LearningKit.Gui.Startup;
 using LearningKit.Gui.ViewModels;
 
@@ -17,7 +18,7 @@ namespace LearningKit.Gui
 
             window.Show();
 
-            AutofacContainer.Resolve<INavigator>().Navigate(AutofacContainer.Resolve<MainPage>());
+            AutofacContainer.Resolve<INavigationService>().Navigate(AutofacContainer.Resolve<MainPage>());
         }
     }
 }

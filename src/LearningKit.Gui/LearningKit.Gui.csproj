@@ -81,9 +81,10 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Behaviors\WebBrowserPreviewBehavior.cs" />
-    <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Startup\AutofacContainer.cs" />
     <Compile Include="ViewModels\AddNewTaskPageViewModel.cs" />
+    <Compile Include="Services\INavigationService.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

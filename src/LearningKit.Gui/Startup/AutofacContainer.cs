@@ -12,7 +12,7 @@ namespace LearningKit.Gui.Startup
         static AutofacContainer() {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<Navigator>().As<INavigator>().InstancePerLifetimeScope();
+            builder.RegisterType<Navigator>().As<INavigationService>().InstancePerLifetimeScope();
             builder.RegisterType<DialogService>().As<IDialogService>();
 
             builder.RegisterType<MainWindowViewModel>().AsSelf();
