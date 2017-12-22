@@ -1,8 +1,9 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
+using LearningKit.Data;
 using LearningKit.Gui.Pages;
 using LearningKit.Gui.Services;
 using LearningKit.Gui.Startup;
-using LearningKit.Gui.ViewModels;
 
 namespace LearningKit.Gui
 {
@@ -13,6 +14,9 @@ namespace LearningKit.Gui
         
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
+
+            if (!Directory.Exists(LocationHelper.DataPath))
+                Directory.CreateDirectory(LocationHelper.DataPath);
 
             var window = AutofacContainer.Resolve<MainWindow>();
 

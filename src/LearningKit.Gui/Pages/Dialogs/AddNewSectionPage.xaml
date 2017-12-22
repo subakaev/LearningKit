@@ -4,15 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LearningKit.Gui.Pages.Dialogs"
+      xmlns:viewModels="clr-namespace:LearningKit.Gui.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="Содание нового раздела">
+      Title="Содание нового раздела"
+      d:DataContext="{d:DesignInstance viewModels:AddNewSectionPageViewModel}">
 
     <StackPanel Margin="10">
         <Label>Название:</Label>
         <StackPanel Orientation="Horizontal">
-            <TextBox Width="200" VerticalAlignment="Center" FontSize="20" />
-            <Button VerticalAlignment="Center" Margin="5 0 0 0" Padding="5">Создать</Button>
+            <TextBox Width="200" VerticalAlignment="Center" FontSize="20" Text="{Binding Name}" />
+            <Button VerticalAlignment="Center" Margin="5 0 0 0" Padding="5" Command="{Binding AddNewSectionCommand}">Создать</Button>
         </StackPanel>
     </StackPanel>
 </Page>

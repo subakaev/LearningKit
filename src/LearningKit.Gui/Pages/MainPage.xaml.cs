@@ -1,4 +1,5 @@
-﻿using LearningKit.Gui.ViewModels;
+﻿using LearningKit.Data;
+using LearningKit.Gui.ViewModels;
 
 namespace LearningKit.Gui.Pages
 {
@@ -7,11 +8,15 @@ namespace LearningKit.Gui.Pages
     /// </summary>
     public partial class MainPage
     {
-        public MainPage()
+        private readonly ISectionsStorage sectionsStorage;
+
+        public MainPage(ISectionsStorage sectionsStorage)
         {
+            this.sectionsStorage = sectionsStorage;
+
             InitializeComponent();
 
-            DataContext = new MainPageViewModel();
+            DataContext = new MainPageViewModel(sectionsStorage);
         }
     }
 }

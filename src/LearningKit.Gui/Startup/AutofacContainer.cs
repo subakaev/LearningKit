@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using LearningKit.Data;
 using LearningKit.Gui.Pages;
 using LearningKit.Gui.Services;
 using LearningKit.Gui.ViewModels;
@@ -14,6 +15,8 @@ namespace LearningKit.Gui.Startup
 
             builder.RegisterType<Navigator>().As<INavigationService>().InstancePerLifetimeScope();
             builder.RegisterType<DialogService>().As<IDialogService>();
+
+            builder.RegisterType<JsonSectionsStorage>().As<ISectionsStorage>();
 
             builder.RegisterType<MainWindowViewModel>().AsSelf();
             builder.RegisterType<MainWindow>().AsSelf();

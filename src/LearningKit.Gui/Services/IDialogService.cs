@@ -1,17 +1,23 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using LearningKit.Gui.Pages.Dialogs;
 
 namespace LearningKit.Gui.Services
 {
+    public interface IDialogPageViewModel
+    {
+        event EventHandler Complete;
+    }
+
     interface IDialogService
     {
-        void Show(Page page);
+        bool? Show<TPage>(IDialogPageViewModel viewModel) where TPage : Page, new();
     }
 
     class DialogService : IDialogService
     {
-        public void Show(Page page) {
-            new DialogWindow(page) {Owner = App.Current.MainWindow}.ShowDialog();
+        public bool? Show<TPage>(IDialogPageViewModel viewModel) where TPage : Page, new() {
+            return new DialogWindow(new TPage(), viewModel).ShowDialog();
         }
     }
 }

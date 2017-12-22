@@ -18,5 +18,15 @@
                 </StackPanel>
             </Button>
         </StackPanel>
+        
+        <StackPanel DockPanel.Dock="Top" Margin="10">
+            <ItemsControl ItemsSource="{Binding Sections}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Name}" Padding="20" HorizontalAlignment="Center" Width="150" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
     </DockPanel>
 </Page>

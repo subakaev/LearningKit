@@ -83,6 +83,7 @@
     <Compile Include="Behaviors\WebBrowserPreviewBehavior.cs" />
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Startup\AutofacContainer.cs" />
+    <Compile Include="ViewModels\AddNewSectionPageViewModel.cs" />
     <Compile Include="ViewModels\AddNewTaskPageViewModel.cs" />
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
