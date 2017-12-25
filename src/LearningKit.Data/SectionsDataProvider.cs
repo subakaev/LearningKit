@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
@@ -10,6 +11,10 @@ namespace LearningKit.Data
     {
         IList<Section> Sections { get; }
 
+        void AddSection(string name);
+
+        void RemoveSection(Guid guid);
+
         void Load();
 
         void Save();
@@ -19,23 +24,33 @@ namespace LearningKit.Data
     {
         private readonly string dataFilePath = LocationHelper.ResolveDataFilePath("sections.json");
 
-        public IList<Section> Sections { get; private set; }
+        private List<Section> sections = new List<Section>();
 
-        public JsonSectionsStorage() {
-            Sections = new List<Section>();
+        public IList<Section> Sections => new ReadOnlyCollection<Section>(sections);
 
-            Sections.Add(new Section("test"));
+        public void AddSection(string name) {
+            sections.Add(new Section(name));
+
+            Save();
+        }
+
+        public void RemoveSection(Guid guid) {
+            var section = sections.Single(x => x.Guid.Equals(guid));
+
+            sections.Remove(section);
+
+            Save();
         }
 
         public void Load() {
             if (!File.Exists(dataFilePath))
                 return;
 
-            Sections = JsonConvert.DeserializeObject<Section[]>(File.ReadAllText(dataFilePath)).ToList();
+            sections = JsonConvert.DeserializeObject<Section[]>(File.ReadAllText(dataFilePath)).ToList();
         }
 
         public void Save() {
-            File.WriteAllText(dataFilePath, JsonConvert.SerializeObject(Sections));
+            File.WriteAllText(dataFilePath, JsonConvert.SerializeObject(sections));
         }
     }
 }

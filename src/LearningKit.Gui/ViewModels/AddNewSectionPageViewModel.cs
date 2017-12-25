@@ -23,7 +23,7 @@ namespace LearningKit.Gui.ViewModels
         }
 
         private void OnAddNewSectionCommandExecute() {
-            sectionsStorage.Sections.Add(new Section(Name));
+            sectionsStorage.AddSection(Name);
             Complete?.Invoke(this, EventArgs.Empty);
         }
 

@@ -23,7 +23,34 @@
             <ItemsControl ItemsSource="{Binding Sections}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding Name}" Padding="20" HorizontalAlignment="Center" Width="150" />
+                        <Border Margin="2" BorderBrush="Black" BorderThickness="2" CornerRadius="2" Width="200">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                
+                                <Label Grid.Column="0" Grid.Row="0" FontSize="16" FontWeight="Bold" Content="{Binding Name}" />
+                                <Button Grid.Column="1" Grid.Row="0" Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}" 
+                                        Padding="0" Width="15" HorizontalAlignment="Right" Margin="0 2 0 0"
+                                        VerticalAlignment="Top" Background="Transparent" Cursor="Hand"
+                                        Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}, Path=DataContext.DeleteSectionCommand}" 
+                                        CommandParameter="{Binding Guid}">
+                                    <ContentControl ContentTemplate="{StaticResource DeleteIconTemplate}" />
+                                </Button>
+
+                                <Button Grid.Column="1" Grid.Row="1" Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}" 
+                                        Padding="0" Width="15" HorizontalAlignment="Right" Margin="0 0 0 2"
+                                        VerticalAlignment="Top" Background="Transparent" Cursor="Hand">
+                                    <ContentControl ContentTemplate="{StaticResource TriangleRightTemplate}" />
+                                </Button>
+                                
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

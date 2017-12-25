@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using LearningKit.Data;
 using LearningKit.Gui.Commands;
@@ -31,10 +32,20 @@ namespace LearningKit.Gui.ViewModels
                 }
             });
 
+            DeleteSectionCommand = new RelayCommand<Guid>(guid => {
+                if (MessageBox.Show("Удалить раздел, включая все подразделы?", "Удаление раздела", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes) {
+                    sectionsStorage.RemoveSection(guid);
+                    Sections = new ObservableCollection<Section>(sectionsStorage.Sections);
+                    OnPropertyChanged(nameof(Sections));
+                }
+            });
+
             sectionsStorage.Load();
             Sections = new ObservableCollection<Section>(sectionsStorage.Sections);
         }
 
         public ICommand ShowAddSectionDialogCommand { get; }
+
+        public ICommand DeleteSectionCommand { get; }
     }
 }
