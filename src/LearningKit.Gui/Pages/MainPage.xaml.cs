@@ -1,5 +1,7 @@
 ﻿using LearningKit.Data;
+using LearningKit.Gui.Startup;
 using LearningKit.Gui.ViewModels;
+using Prism.Events;
 
 namespace LearningKit.Gui.Pages
 {
@@ -16,7 +18,7 @@ namespace LearningKit.Gui.Pages
 
             InitializeComponent();
 
-            DataContext = new MainPageViewModel(sectionsStorage);
+            DataContext = new MainPageViewModel(sectionsStorage, AutofacContainer.Resolve<IEventAggregator>());
         }
     }
 }

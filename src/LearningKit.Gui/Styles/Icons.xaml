@@ -21,7 +21,14 @@
         <Viewbox>
             <Path Data="M0,0L25.194,16 0,32z" Stretch="Uniform" Fill="Green" Width="26" Height="26" />
         </Viewbox>
+    </DataTemplate>
 
+    <DataTemplate x:Key="EditIconTemplate">
+        <Viewbox>
+            <Path
+                Data="M4.6320252,22.030058L3.1999512,28.372999 9.5797443,26.977822z M17.871437,8.8815043L6.2041359,20.284113 11.421483,25.501507 23.023018,14.033042z M23.466919,3.4129653L19.549492,7.2415196 24.691561,12.383636 28.586914,8.532963z M23.679932,0L32,8.532963 11.093018,29.013014 0,31.360001 2.5599365,20.47999z"
+                Stretch="Uniform" Fill="Blue" Width="26" Height="26" />
+        </Viewbox>
     </DataTemplate>
 
 </ResourceDictionary>

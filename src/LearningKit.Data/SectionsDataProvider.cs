@@ -11,7 +11,7 @@ namespace LearningKit.Data
     {
         IList<Section> Sections { get; }
 
-        void AddSection(string name);
+        void AddSection(Section parent, string name);
 
         void RemoveSection(Guid guid);
 
@@ -28,8 +28,11 @@ namespace LearningKit.Data
 
         public IList<Section> Sections => new ReadOnlyCollection<Section>(sections);
 
-        public void AddSection(string name) {
-            sections.Add(new Section(name));
+        public void AddSection(Section parent, string name) {
+            if (parent == null)
+                sections.Add(new Section(name));
+            else 
+                parent.Children.Add(new Section(name));
 
             Save();
         }
@@ -47,7 +50,12 @@ namespace LearningKit.Data
                 return;
 
             sections = JsonConvert.DeserializeObject<Section[]>(File.ReadAllText(dataFilePath)).ToList();
+
+            foreach (var section in sections) {
+                section.UpdateParent(null);
+            }
         }
+
 
         public void Save() {
             File.WriteAllText(dataFilePath, JsonConvert.SerializeObject(sections));

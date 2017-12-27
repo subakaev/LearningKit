@@ -11,12 +11,16 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
             <Label>Разделы:</Label>
-            <Button Padding="5" Command="{Binding ShowAddSectionDialogCommand}">
-                <StackPanel Orientation="Horizontal">
-                    <ContentControl ContentTemplate="{StaticResource PlusIconTemplate}" Width="15" Height="15" VerticalAlignment="Center" />
-                    <Label VerticalAlignment="Center">Создать раздел</Label>
-                </StackPanel>
-            </Button>
+            <StackPanel Orientation="Horizontal">
+                <Button Command="{Binding CloseSectionCommand}">Назад</Button>
+                <Button Padding="5" Command="{Binding ShowAddSectionDialogCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl ContentTemplate="{StaticResource PlusIconTemplate}" Width="15" Height="15" VerticalAlignment="Center" />
+                        <Label VerticalAlignment="Center">Создать раздел</Label>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            
         </StackPanel>
         
         <StackPanel DockPanel.Dock="Top" Margin="10">
@@ -35,17 +39,33 @@
                                 </Grid.RowDefinitions>
                                 
                                 <Label Grid.Column="0" Grid.Row="0" FontSize="16" FontWeight="Bold" Content="{Binding Name}" />
-                                <Button Grid.Column="1" Grid.Row="0" Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}" 
-                                        Padding="0" Width="15" HorizontalAlignment="Right" Margin="0 2 0 0"
-                                        VerticalAlignment="Top" Background="Transparent" Cursor="Hand"
-                                        Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}, Path=DataContext.DeleteSectionCommand}" 
-                                        CommandParameter="{Binding Guid}">
-                                    <ContentControl ContentTemplate="{StaticResource DeleteIconTemplate}" />
-                                </Button>
+
+                                <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" Margin="0 2 0 0"
+                                            VerticalAlignment="Top" Orientation="Horizontal">
+                                    <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}" 
+                                            Padding="0" Width="15"  Background="Transparent" Cursor="Hand" Margin="0 0 5 0"
+                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}, Path=DataContext.EditSectionCommand}" 
+                                            CommandParameter="{Binding}">
+                                        <ContentControl ContentTemplate="{StaticResource EditIconTemplate}" />
+                                    </Button>
+                                    <Button Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}" 
+                                            Padding="0" Width="15"  Background="Transparent" Cursor="Hand"
+                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}, Path=DataContext.DeleteSectionCommand}" 
+                                            CommandParameter="{Binding Guid}">
+                                        <ContentControl ContentTemplate="{StaticResource DeleteIconTemplate}" />
+                                    </Button>
+                                </StackPanel>
+                                
+                                
+                                <StackPanel Grid.Column="0" Grid.Row="1">
+                                    <Button>Список задач</Button>
+                                </StackPanel>
 
                                 <Button Grid.Column="1" Grid.Row="1" Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}" 
                                         Padding="0" Width="15" HorizontalAlignment="Right" Margin="0 0 0 2"
-                                        VerticalAlignment="Top" Background="Transparent" Cursor="Hand">
+                                        VerticalAlignment="Top" Background="Transparent" Cursor="Hand"
+                                        Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}, Path=DataContext.OpenSectionCommand}"
+                                        CommandParameter="{Binding}">
                                     <ContentControl ContentTemplate="{StaticResource TriangleRightTemplate}" />
                                 </Button>
                                 

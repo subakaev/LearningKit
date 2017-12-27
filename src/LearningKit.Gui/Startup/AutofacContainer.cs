@@ -3,6 +3,7 @@ using LearningKit.Data;
 using LearningKit.Gui.Pages;
 using LearningKit.Gui.Services;
 using LearningKit.Gui.ViewModels;
+using Prism.Events;
 
 namespace LearningKit.Gui.Startup
 {
@@ -18,10 +19,12 @@ namespace LearningKit.Gui.Startup
 
             builder.RegisterType<JsonSectionsStorage>().As<ISectionsStorage>();
 
+            builder.RegisterType<EventAggregator>().As<IEventAggregator>().InstancePerLifetimeScope();
+
             builder.RegisterType<MainWindowViewModel>().AsSelf();
             builder.RegisterType<MainWindow>().AsSelf();
 
-            builder.RegisterType<MainPage>().AsSelf();
+//            builder.RegisterType<MainPage>().AsSelf();
 
             Container = builder.Build();
         }

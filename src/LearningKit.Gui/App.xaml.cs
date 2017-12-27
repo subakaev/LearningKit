@@ -22,7 +22,7 @@ namespace LearningKit.Gui
 
             window.Show();
 
-            AutofacContainer.Resolve<INavigationService>().Navigate(AutofacContainer.Resolve<MainPage>());
+            AutofacContainer.Resolve<INavigationService>().Navigate(new MainPage(AutofacContainer.Resolve<ISectionsStorage>()));
         }
     }
 }
